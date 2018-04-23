@@ -18,6 +18,11 @@ curl_setopt($ch, CURLOPT_POST, 1);
 
 //$file=curl_exec($ch); //store the content in variable
 
+$contents = curl_exec($ch);
+$fp = fopen("test.xml", "w");
+fwrite($fp, $contents);
+exit;
+
 if(!curl_errno($ch))
 {
     set_time_limit(0);
