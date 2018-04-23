@@ -17,6 +17,7 @@ curl_setopt($ch, CURLOPT_POST, 1);
 
 
 $file=curl_exec($ch); //store the content in variable
+echo $file;exit;
 if(!curl_errno($ch))
 {
     //send out headers and output
@@ -25,16 +26,7 @@ if(!curl_errno($ch))
     echo $file;
 } else echo 'Curl error: ' . curl_error($ch);
 
-/*header ("Content-type: application/pdf");
-header ("Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD)."");*/
 
-//header ("Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD)."");
-
-//curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-
-//$result = curl_exec($ch);
-//echo $result;
 if (curl_errno($ch)) {
     echo 'Error:' . curl_error($ch);
 }
