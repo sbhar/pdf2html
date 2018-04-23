@@ -24,7 +24,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 // Check if any error occurred
 if (!curl_errno($ch)) {
   $info = curl_getinfo($ch);
-  echo 'Takes:  ', $info['download_content_length'],  "\n";
+  echo 'upload content length:  ', $info['upload_content_length'],  "\n";
 }
 
 $result = curl_exec($ch);
