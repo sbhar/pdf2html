@@ -5,6 +5,7 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://netservice-convert-pdf-to-html-v1.p.mashape.com/api/documents/pdf2html.json");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, "document=@test.pdf,dpi=144,embedCSS=true,embedFont=true,embedImage=true,embedJavascript=true,enableOutline=false,zoom=1.0");
 
 $headers = array();
 $headers[] = "X-Mashape-Key: In6SBZF6oJmshwk3zDfm0kWTzvVkp11hzE3jsntXMDKRReTK0U";
