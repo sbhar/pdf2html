@@ -14,6 +14,7 @@ $headers[] = "X-Blackboxapitoken: Mashape";
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 $result = curl_exec($ch);
+echo $result;
 if (curl_errno($ch)) {
     echo 'Error:' . curl_error($ch);
 }
