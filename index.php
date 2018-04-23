@@ -11,13 +11,21 @@ $post = array(
 curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 curl_setopt($ch, CURLOPT_POST, 1);
 
-curl_setopt($ch, CURLOPT_INFILE, $fh_res);
-curl_setopt($ch, CURLOPT_INFILESIZE, filesize($file_path_str));
+//curl_setopt($ch, CURLOPT_INFILE, $fh_res);
+//curl_setopt($ch, CURLOPT_INFILESIZE, filesize($file_path_str));
+
+
 
 $headers = array();
 $headers[] = "Content-Type: application/pdf";
 
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+// Check if any error occurred
+if (!curl_errno($ch)) {
+  $info = curl_getinfo($ch);
+  echo 'Takes:  ', $info['download_content_length'],  "\n";
+}
 
 $result = curl_exec($ch);
 echo $result;
