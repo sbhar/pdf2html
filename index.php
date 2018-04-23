@@ -18,6 +18,7 @@ curl_setopt($ch, CURLOPT_POST, 1);
 
 $headers = array();
 $headers[] = "Content-Type: application/pdf";
+header ("Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD)."");
 
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
