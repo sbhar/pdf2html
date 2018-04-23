@@ -16,7 +16,7 @@ curl_setopt($ch, CURLOPT_INFILESIZE, filesize($file_path_str));
 
 $headers = array();
 $headers[] = "Content-Type: application/pdf";
-$headers[] = "Content-Length: ''";
+
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 $result = curl_exec($ch);
