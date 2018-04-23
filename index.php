@@ -16,16 +16,25 @@ curl_setopt($ch, CURLOPT_POST, 1);
 
 
 
-$headers = array();
-$headers[] = "Content-Type: application/pdf";
-$headers[] = "Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+$file=curl_exec($ch); //store the content in variable
+if(!curl_errno($ch))
+{
+    //send out headers and output
+    header ("Content-type: application/pdf");
+    header ("Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD)."");
+    echo $file;
+} else echo 'Curl error: ' . curl_error($ch);
+
+/*header ("Content-type: application/pdf");
+header ("Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD)."");*/
+
 //header ("Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD)."");
 
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+//curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 
-$result = curl_exec($ch);
-echo $result;
+//$result = curl_exec($ch);
+//echo $result;
 if (curl_errno($ch)) {
     echo 'Error:' . curl_error($ch);
 }
