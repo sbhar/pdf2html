@@ -22,13 +22,13 @@ if(!curl_errno($ch))
 {
     set_time_limit(0);
 //This is the file where we save the    information
-$fp = fopen (dirname(__FILE__) . '/localfile.zip', 'w+');
+$fp = fopen (dirname(__FILE__) . '/localfile.xml', 'w+');
 
-curl_setopt($ch, CURLOPT_TIMEOUT, 50);
+curl_setopt($ch, CURLOPT_TIMEOUT, 5000);
 // write curl response to file
 curl_setopt($ch, CURLOPT_FILE, $fp); 
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+curl_setopt($ch, CURLOPT_TIMEOUT, 5000);
 curl_setopt($ch, CURLOPT_BUFFERSIZE, 40960);
 
 curl_exec($ch) OR die("Error in curl_exec()");
