@@ -16,14 +16,22 @@ curl_setopt($ch, CURLOPT_POST, 1);
 
 
 
-$file=curl_exec($ch); //store the content in variable
+//$file=curl_exec($ch); //store the content in variable
 
 if(!curl_errno($ch))
 {
-    //send out headers and output
-    header ("Content-Type:text/html");
-    header ("Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD)."");
-    echo "Test".$file;
+    set_time_limit(0);
+//This is the file where we save the    information
+$fp = fopen (dirname(__FILE__) . '/localfile.tmp', 'w+');
+
+curl_setopt($ch, CURLOPT_TIMEOUT, 50);
+// write curl response to file
+curl_setopt($ch, CURLOPT_FILE, $fp); 
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+// get curl response
+curl_exec($ch); 
+curl_close($ch);
+fclose($fp);
 } else echo 'Curl error: ' . curl_error($ch);
 
 
