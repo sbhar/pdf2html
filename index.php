@@ -17,14 +17,13 @@ curl_setopt($ch, CURLOPT_POST, 1);
 
 
 $file=curl_exec($ch); //store the content in variable
-$output = (string)$file;
-echo $output;exit;
+
 if(!curl_errno($ch))
 {
     //send out headers and output
-    header ("Content-Type:text/xml");
+    header ("Content-Type:text/html");
     header ("Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD)."");
-    echo $file;
+    echo "Test".$file;
 } else echo 'Curl error: ' . curl_error($ch);
 
 
