@@ -21,7 +21,7 @@ echo $file;
 if(!curl_errno($ch))
 {
     //send out headers and output
-    header ("Content-type: text/plain");
+    header ("Content-Type:text/xml");
     header ("Content-Length: ".curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD)."");
     echo $file;
 } else echo 'Curl error: ' . curl_error($ch);
