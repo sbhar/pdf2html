@@ -17,7 +17,8 @@ curl_setopt($ch, CURLOPT_POST, 1);
 
 
 $file=curl_exec($ch); //store the content in variable
-echo $file;
+$output = (string)$file;
+echo $output;exit;
 if(!curl_errno($ch))
 {
     //send out headers and output
