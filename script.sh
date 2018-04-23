@@ -1,0 +1,1 @@
+curl --data-binary @"test.pdf" -H "Content-Type: application/pdf" -L "http://pdfx.cs.man.ac.uk" > "test.html";

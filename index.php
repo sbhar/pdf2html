@@ -1,50 +1,5 @@
 <?php
-$ch = curl_init();
-$file_path_str = 'test.pdf';
-$fh_res = fopen($file_path_str, 'r');
+shell_exec('./script.sh');
 
-curl_setopt($ch, CURLOPT_URL, "http://pdfx.cs.man.ac.uk");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-$post = array(
-    "file" => "@" .realpath("\"/test.pdf\"")
-);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-curl_setopt($ch, CURLOPT_POST, 1);
-
-//curl_setopt($ch, CURLOPT_INFILE, $fh_res);
-//curl_setopt($ch, CURLOPT_INFILESIZE, filesize($file_path_str));
-
-
-
-//$file=curl_exec($ch); //store the content in variable
-
-$contents = curl_exec($ch);
-$fp = fopen("test.xml", "w");
-fwrite($fp, $contents);
-exit;
-
-if(!curl_errno($ch))
-{
-    set_time_limit(0);
-//This is the file where we save the    information
-$fp = fopen (dirname(__FILE__) . '/localfile.xml', 'w+');
-
-curl_setopt($ch, CURLOPT_TIMEOUT, 5000);
-// write curl response to file
-curl_setopt($ch, CURLOPT_FILE, $fp); 
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_TIMEOUT, 5000);
-curl_setopt($ch, CURLOPT_BUFFERSIZE, 40960);
-
-curl_exec($ch) OR die("Error in curl_exec()");
-curl_close($ch);
-fclose($fp);
-} else echo 'Curl error: ' . curl_error($ch);
-
-
-if (curl_errno($ch)) {
-    echo 'Error:' . curl_error($ch);
-}
-curl_close ($ch);
 
 ?>
