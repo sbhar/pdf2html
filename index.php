@@ -4,6 +4,7 @@ if (!file_exists('uploads')) {
 	mkdir('uploads', 0700, true);
 }
 $outputchoice = htmlentities($_POST['outputchoice'], ENT_QUOTES, "UTF-8");
+echo $outputchoice;exit;
 if(move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $_FILES['file']['name'])) {
 	if(isset($outputchoice == "html") {
 		echo "HTML output is selected";
