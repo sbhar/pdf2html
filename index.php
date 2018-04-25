@@ -6,7 +6,7 @@ if (!file_exists('uploads')) {
 $outputchoice = htmlentities($_POST['outputchoice'], ENT_QUOTES, "UTF-8");
 echo $outputchoice;
 if(move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $_FILES['file']['name'])) {
-	if(isset($outputchoice == "html") {
+	if($outputchoice == "html") {
 		echo "HTML output is selected";
 		chmod("scripthtml.sh",0700);
 		shell_exec('./scripthtml.sh');
